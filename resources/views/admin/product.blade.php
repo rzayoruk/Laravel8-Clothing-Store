@@ -24,7 +24,7 @@
                     <div class="box">
                         <div class="box-header">
 
-                            <a href="{{route('admin_product_add')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Add Product</a>
+                            <a href="{{route('admin_product_create')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Add Product</a>
 
                         </div>
                         <!-- /.box-header -->
@@ -39,21 +39,22 @@
                                     <th>Price</th>
                                     <th>Image</th>
                                     <th>Status</th>
-                                    <th colspan="2">Actions</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($datalist as $rows)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{$rows->id}}</td>
-                                        <td>{{$rows->category}}</td>
+                                        <td>{{$rows->category_id}}</td>
                                         <td>{{$rows->title}}</td>
                                         <td>{{$rows->quantity}}</td>
                                         <td>{{$rows->price}}</td>
                                         <td>{{$rows->image}}</td>
                                         <td>{{$rows->status}}</td>
-                                        <td><a href="{{route('admin_category_edit',['id'=>$rows->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_category_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')">Delete</a></td>
+                                        <td><a href="{{route('admin_product_edit',['id'=>$rows->id])}}">Edit</a></td>
+                                        <td><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')">Delete</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
