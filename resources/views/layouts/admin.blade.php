@@ -56,5 +56,7 @@
 
 
     @include('admin._js')
+@section('footerjs')
+@show
 </body>
 </html>
