@@ -5,10 +5,14 @@
             <div class="pull-left image">
                 <img src="{{asset('assets')}}/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
+
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                @auth
+                <p>{{Auth::user()->name}}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                @endauth
             </div>
+
         </div>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
@@ -22,6 +26,7 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
+
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
@@ -187,12 +192,14 @@
                     <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
                 </ul>
             </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+            <li><a href="{{route('admin_category')}}"><i class="fa fa-book"></i> <span>Categories</span></a></li>
+            <li><a href="{{route('admin_products')}}"><i class="fa fa-book"></i> <span>Products</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
         </ul>
     </section>
+
     <!-- /.sidebar -->
 

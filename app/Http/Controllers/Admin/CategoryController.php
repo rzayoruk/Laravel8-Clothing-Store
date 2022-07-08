@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -14,17 +16,34 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      //$datalist = DB::table('categories')->get()  ;
+        $datalist = DB::select('select * from categories');
+      //  print_r($datalist);
+      //  exit();
+
+        return view('admin.category',['datalist'=>$datalist]);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request  $request)
     {
-        //
+        //$name=$request->input('title');
+        //echo $name;
+        DB::table('categories')->insert([
+            'parent_id'=>$request->input('parent_id'),
+            'title'=>$request->input('title'),
+            'keywords'=>$request->input('keywords'),
+            'description'=>$request->input('description'),
+            'slug'=>$request->input('slug'),
+            'status'=>$request->input('status')
+
+
+        ]);
+        return redirect()->route('admin_category');
     }
 
     /**
@@ -33,9 +52,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function add(Request $request)
     {
-        //
+        $datalist = DB::table('categories')->get()->where('parent_id',0);
+        //print_r($datalist);
+        // exit();
+        return view('admin.category_add',['datalist'=>$datalist]);
     }
 
     /**
@@ -57,7 +79,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        //echo "abuziddin";
+        $data=Category::find($id);
+        $datalist = DB::table('categories')->get()->where('parent_id',0);
+        return view('admin.category_edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -69,7 +94,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data= Category::find($id);
+            $data->parent_id=$request->input('parent_id');
+            $data->title=$request->input('title');
+            $data->keywords=$request->input('keywords');
+            $data->description=$request->input('description');
+            $data->slug=$request->input('slug');
+            $data->status=$request->input('status');
+            $data->save();
+        return redirect()->route('admin_category');
     }
 
     /**
@@ -80,6 +113,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('categories')->where('id','=',$id)->delete();
+        return redirect()->route('admin_category');
     }
 }
