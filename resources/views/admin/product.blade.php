@@ -4,8 +4,6 @@
 @section('title', 'Product List')
 
 
-
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -51,7 +49,7 @@
                                         <td>{{$rows->title}}</td>
                                         <td>{{$rows->quantity}}</td>
                                         <td>{{$rows->price}}</td>
-                                        <td>{{$rows->image}}</td>
+                                        <td>@if($rows->image)<img src="{{ Storage::url($rows->image) }}" height="60" alt="">@endif</td>
                                         <td>{{$rows->status}}</td>
                                         <td><a href="{{route('admin_product_edit',['id'=>$rows->id])}}">Edit</a></td>
                                         <td><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')">Delete</a></td>
