@@ -36,9 +36,9 @@
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Image</th>
+                                    <th>Image Gallery</th>
                                     <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,9 +50,12 @@
                                         <td>{{$rows->quantity}}</td>
                                         <td>{{$rows->price}}</td>
                                         <td>@if($rows->image)<img src="{{ Storage::url($rows->image) }}" height="60" alt="">@endif</td>
+                                        <td>
+                                            <a href="{{route('admin_image_create',['product_id'=>$rows->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')">
+                                                <img src="{{asset('assets/admin/images')}}/galleryicon.png" height="40" alt=""></a>
+                                        </td>
                                         <td>{{$rows->status}}</td>
-                                        <td><a href="{{route('admin_product_edit',['id'=>$rows->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')">Delete</a></td>
+                                        <td width="85"><a href="{{route('admin_product_edit',['id'=>$rows->id])}}"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt=""></a><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt=""></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
