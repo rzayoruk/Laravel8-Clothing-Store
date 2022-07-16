@@ -55,7 +55,7 @@
                                                 <img src="{{asset('assets/admin/images')}}/galleryicon.png" height="40" alt=""></a>
                                         </td>
                                         <td>{{$rows->status}}</td>
-                                        <td width="85"><a href="{{route('admin_product_edit',['id'=>$rows->id])}}"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt=""></a><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt=""></a></td>
+                                        <td width="100"><a href="{{route('admin_product_edit',['id'=>$rows->id])}}"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt="" align="left"></a><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt="" align="right"></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
