@@ -44,7 +44,7 @@
                                 @foreach($datalist as $rows)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{$rows->id}}</td>
-                                        <td>{{$rows->parent_id}}</td>
+                                        <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rows,$rows->title)}}</td>
                                         <td>{{$rows->title}}</td>
                                         <td>{{$rows->status}}</td>
                                         <td><a href="{{route('admin_category_edit',['id'=>$rows->id])}}">Edit</a></td>

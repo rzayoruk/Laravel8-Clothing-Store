@@ -45,7 +45,7 @@
                                 @foreach($datalist as $rows)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{$rows->id}}</td>
-                                        <td>{{$rows->category_id}}</td>
+                                        <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rows->category,$rows->category->title)}}</td>
                                         <td>{{$rows->title}}</td>
                                         <td>{{$rows->quantity}}</td>
                                         <td>{{$rows->price}}</td>

@@ -57,7 +57,7 @@
 
                                 <select name="category_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                     @foreach($datalist as $rows)
-                                    <option value="{{$rows->id}}">{{$rows->title}}</option>
+                                    <option value="{{$rows->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rows,$rows->title)}}</option>
                                     @endforeach
                                 </select>
                             </div>
