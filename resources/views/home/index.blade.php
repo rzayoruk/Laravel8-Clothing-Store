@@ -1,12 +1,8 @@
 @extends('layouts.home')
 
-@section('title', 'Sub Page Title')
-
-@section('description')
-    The cheapest and most popular clothing store in Turkey.
-@endsection
-
-@section('keywords','Jean','Shirts','Jackets','Shoes')
+@section('title', $setting->title)
+@section('description'){{$setting->description}}@endsection
+@section('keywords',$setting->keywords)
 
 @section('content')
 

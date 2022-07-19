@@ -10,6 +10,7 @@
                 @auth
                 <p>{{Auth::user()->name}}</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <a href="{{route('logout')}}">Logout</a>
                 @endauth
             </div>
 

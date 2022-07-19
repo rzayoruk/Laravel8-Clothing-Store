@@ -10,19 +10,25 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home', function () {
+/*Route::get('/home', function () {
     return view('home.index',['name'=>'rizayoruk']);
-});
+});*/
 ///////yazdıklarımız
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home.index');
-});
+});*/
 
 
 
-Route::get('/home/{id}',[HomeController::class,'test'])->where('id','[0-9]+')->name('test');
+Route::get('/',[HomeController::class,'index'])->name('home_index');
 
-Route::redirect('/anasayfa','/home')->name('anasayfa');
+Route::get('/home',[HomeController::class,'index'])->name('home_index');
+Route::get('/home',[HomeController::class,'aboutus'])->name('aboutus');
+Route::get('/references',[HomeController::class,'references'])->name('references');
+Route::get('/faq',[HomeController::class,'faq'])->name('faq');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+
+
 
 
 /// Admin
@@ -72,9 +78,15 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 });
 
+Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
+    Route::get('/',[\App\Http\Controllers\UserController::class,'index'])->name('myprofile');
+
+});
+
+
 Route::get('/admin/login',[\App\Http\Controllers\Admin\HomeController::class,'login'])->name('admin_login');
 Route::post('/admin/logincheck',[\App\Http\Controllers\Admin\HomeController::class,'logincheck'])->name('admin_logincheck');
-Route::get('/admin/logout',[\App\Http\Controllers\Admin\HomeController::class,'logout'])->name('admin_logout');
+Route::get('logout',[HomeController::class,'logout'])->name('logout');
 
 
 /////

@@ -1,3 +1,7 @@
+@php
+$setting=\App\Http\Controllers\HomeController::getSetting();
+    @endphp
+
 <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
     <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -54,7 +58,7 @@
     <div class="row border-top border-light mx-xl-5 py-4">
         <div class="col-md-6 px-xl-0">
             <p class="mb-md-0 text-center text-md-left text-dark">
-                &copy; <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                 <a class="text-dark font-weight-semi-bold" href="#">{{$setting->company}}</a>. All Rights Reserved. Designed
                 by
                 <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a><br>
                 Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
