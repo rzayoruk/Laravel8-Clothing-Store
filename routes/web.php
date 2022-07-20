@@ -30,6 +30,7 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmessage');
 Route::get('/product/{id}/{slug}',[HomeController::class,'product'])->name('product');
 Route::get('/categoryproducts/{id}/{slug}',[HomeController::class,'categoryproducts'])->name('categoryproducts');
+Route::get('/addtocart/{id}',[HomeController::class,'addtocart'])->whereNumber('id')->name('addtocart');
 
 
 

@@ -24,10 +24,22 @@ class HomeController extends Controller
     public function index()
     {
         $setting=Setting::first();
-        $slider=Product::select('id','title','image','price','slug')->limit(3)->get();
-        //print_r($slider);
+        $slider=Product::select('id','title','image','price','slug')->limit(5)->get();
+        $daily= Product::select('id','title','image','price','slug')->limit(4)->inRandomOrder()->get();
+        $last= Product::select('id','title','image','price','slug')->limit(4)->orderByDesc('id')->get();
+        $picked= Product::select('id','title','image','price','slug')->limit(5)->inRandomOrder()->get();
+        $data=[
+            'setting'=>$setting,
+            'slider'=>$slider,
+            'daily'=>$daily,
+            'last'=>$last,
+            'picked'=>$picked,
+            'page'=>'home'
+        ];
+
+        //print_r($data);
         //exit();
-        $data=['setting'=>$setting,'slider'=>$slider,'page'=>'home'];
+
         return view("home.index",$data);
     }
 
@@ -39,7 +51,16 @@ class HomeController extends Controller
         //return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
     }
 
-    public function categoryproducts($id,$slug)
+    public function addtocart($id)
+    {
+        echo 'added to cart';
+        $data=Product::find($id);
+        print_r($data);
+        exit();
+        //return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
+    }
+
+    public function categoryproducts($id,$slug) // slug adress satrında gözükmesi için var
     {
         $setting=Setting::first();
         $datalist=Product::where('category_id',$id)->get();
