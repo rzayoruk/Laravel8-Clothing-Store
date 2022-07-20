@@ -22,7 +22,7 @@
                     <div class="box">
                         <div class="box-header">
 
-                            <a href="{{route('admin_product_create')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Products</a>
+                            <a href="{{route('admin_product_create')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Add Product</a>
 
                         </div>
                         <!-- /.box-header -->

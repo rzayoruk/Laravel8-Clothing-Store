@@ -24,11 +24,19 @@ class HomeController extends Controller
     public function index()
     {
         $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
-        //print_r($setting);
+        $slider=Product::select('id','title','image','price','slug')->limit(3)->get();
+        //print_r($slider);
         //exit();
         $data=['setting'=>$setting,'slider'=>$slider,'page'=>'home'];
         return view("home.index",$data);
+    }
+
+    public function product($id,$slug)
+    {
+        $data=Product::find($id);
+       print_r($data);
+       exit();
+        //return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
     }
 
 
