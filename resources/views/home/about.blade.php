@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.shopcontact')
 
 @section('title', 'About us-'.$setting->title)
 @section('description'){{$setting->description}}@endsection

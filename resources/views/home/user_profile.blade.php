@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.shopcontact')
 
 @section('title', 'User Profile')
 

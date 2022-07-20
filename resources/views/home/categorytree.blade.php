@@ -8,7 +8,7 @@
                 @include('home.categorytree',['children'=>$subcategory->children])
             </div>
     @else
-            <a href="" class="nav-item nav-link">{{$subcategory->title}}</a>
+            <a href="{{route('categoryproducts',['id'=>$subcategory->id,'slug'=>$subcategory->slug])}}" class="nav-item nav-link">{{$subcategory->title}}</a>
     @endif
     </div>
 @endforeach

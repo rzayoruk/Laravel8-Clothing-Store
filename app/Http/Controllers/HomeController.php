@@ -31,7 +31,7 @@ class HomeController extends Controller
         return view("home.index",$data);
     }
 
-    public function product($id,$slug)
+    public function product($id) //product bilgileri için
     {
         $data=Product::find($id);
        print_r($data);
@@ -39,20 +39,28 @@ class HomeController extends Controller
         //return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
     }
 
+    public function categoryproducts($id,$slug)
+    {
+        $setting=Setting::first();
+        $datalist=Product::where('category_id',$id)->get();
+        $data=Product::find($id);
+        //print_r($data);
+        //exit();
+        return view("home.category_products",['setting'=>$setting,'page'=>'home','datalist'=>$datalist,'data'=>$data]);
+    }
+
 
 
     public function aboutus()
     {
         $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
-        return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
+        return view("home.about",['setting'=>$setting]);
     }
 
     public function references()
     {
         $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
-        return view("home.references",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
+        return view("home.references",['setting'=>$setting]);
     }
 
 
@@ -66,14 +74,11 @@ class HomeController extends Controller
     public function contact()
     {
         $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
-        return view("home.contact",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
+        return view("home.contact",['setting'=>$setting]);
     }
 
     public function sendmessage(Request $request)
     {
-        $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
         $data=new \App\Models\Message();
         $data->name=$request->input('name');
         $data->email=$request->input('email');
