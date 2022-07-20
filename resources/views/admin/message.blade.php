@@ -1,7 +1,7 @@
 
 @extends('layouts.admin')
 
-@section('title', 'Product List')
+@section('title', 'Message List')
 
 
 @section('content')
@@ -10,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Product Table
+                Message Table
             </h1>
         </section>
 
@@ -22,8 +22,8 @@
                     <div class="box">
                         <div class="box-header">
 
-                            <a href="{{route('admin_product_create')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Products</a>
-
+                            <a href="{{route('adminhome')}}" type="button" class="btn btn-block btn-primary" style="width: 200px">Home</a>
+                        @include('home.message')
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -31,12 +31,12 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Category</th>
-                                    <th>Title(s)</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Image</th>
-                                    <th>Image Gallery</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Admin Note</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -45,17 +45,15 @@
                                 @foreach($datalist as $rows)
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">{{$rows->id}}</td>
-                                        <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rows->category,$rows->category->title)}}</td>
-                                        <td>{{$rows->title}}</td>
-                                        <td>{{$rows->quantity}}</td>
-                                        <td>{{$rows->price}}</td>
-                                        <td>@if($rows->image)<img src="{{ Storage::url($rows->image) }}" height="60" alt="">@endif</td>
-                                        <td>
-                                            <a href="{{route('admin_image_create',['product_id'=>$rows->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')">
-                                                <img src="{{asset('assets/admin/images')}}/galleryicon.png" height="40" alt=""></a>
-                                        </td>
+                                        <td>{{$rows->name}}</td>
+                                        <td>{{$rows->email}}</td>
+                                        <td>{{$rows->phone}}</td>
+                                        <td>{{$rows->subject}}</td>
+                                        <td>{{$rows->message}}</td>
+                                        <td>{{$rows->note}}</td>
                                         <td>{{$rows->status}}</td>
-                                        <td width="100"><a href="{{route('admin_product_edit',['id'=>$rows->id])}}"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt="" align="left"></a><a href="{{route('admin_product_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt="" align="right"></a></td>
+
+                                        <td width="100"><a href="{{route('admin_message_edit',['id'=>$rows->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1100, height=700')"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt="" align="left"></a><a href="{{route('admin_message_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt="" align="right"></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
