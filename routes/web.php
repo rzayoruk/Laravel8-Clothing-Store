@@ -31,6 +31,8 @@ Route::post('/sendmessage',[HomeController::class,'sendmessage'])->name('sendmes
 Route::get('/product/{id}/{slug}',[HomeController::class,'product'])->name('product');
 Route::get('/categoryproducts/{id}/{slug}',[HomeController::class,'categoryproducts'])->name('categoryproducts');
 Route::get('/addtocart/{id}',[HomeController::class,'addtocart'])->whereNumber('id')->name('addtocart');
+Route::post('/getproduct',[HomeController::class,'getproduct'])->name('getproduct');
+
 
 
 
@@ -70,7 +72,6 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('edit/{id}',[\App\Http\Controllers\Admin\MessageController::class,'edit'])->name('admin_message_edit');
         Route::post('update/{id}',[\App\Http\Controllers\Admin\MessageController::class,'update'])->name('admin_message_update');
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\MessageController::class,'destroy'])->name('admin_message_delete');
-        Route::get('show',[\App\Http\Controllers\Admin\MessageController::class,'show'])->name('admin_message_show');
     });
 
     #Product Image Gallery
@@ -89,6 +90,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
     });
 
+    Route::prefix('reviews')->group(function (){
+
+        Route::get('/',[\App\Http\Controllers\Admin\ReviewController::class,'index'])->name('admin_reviews');
+        Route::get('/edit/{id}',[\App\Http\Controllers\Admin\ReviewController::class,'edit'])->name('admin_review_edit');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\ReviewController::class,'update'])->name('admin_review_update');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ReviewController::class,'destroy'])->name('admin_review_delete');
+    });
+
 
 
 
@@ -96,6 +105,9 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/',[\App\Http\Controllers\UserController::class,'index'])->name('myprofile');
+    Route::get('/myreview',[\App\Http\Controllers\UserController::class,'myReviews'])->name('myreviews');
+    Route::get('/deletemyreview/{id}',[\App\Http\Controllers\UserController::class,'deleteMyReview'])->name('delete_myreview');
+
 
 });
 

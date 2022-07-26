@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Review;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Setting;
 use http\Message;
@@ -20,6 +22,10 @@ class HomeController extends Controller
     {
         return Setting::first();
     }
+
+
+
+
 
     public function index()
     {
@@ -43,12 +49,31 @@ class HomeController extends Controller
         return view("home.index",$data);
     }
 
-    public function product($id) //product bilgileri için
+    public static function countReview($id)
+    {
+        return \App\Models\Review::where('product_id',$id)->where('status','=','True')->count();
+    }
+
+
+    public static function avrgReview($id)
+    {
+        return \App\Models\Review::where('product_id',$id)->average('rate');
+    }
+
+    public function product($id) //product detail bilgileri için
     {
         $data=Product::find($id);
-       print_r($data);
-       exit();
-        //return view("home.about",['setting'=>$setting,'page'=>'home','slider'=>$slider]);
+        $datalist=Image::where('product_id',$id)->get();
+        $reviews=\App\Models\Review::where('product_id',$id)->where('status','=','True')->get(); //model or ?
+       //print_r($reviews);
+       //exit();
+        return view("home.product_detail",['data'=>$data,'datalist'=>$datalist,'reviews'=>$reviews]);
+    }
+
+    public function getproduct(Request $request) // slug adress satrında gözükmesi için var
+    {
+        $data=Product::where('title',$request->input('search'))->first();
+        return redirect()->route('product',['id'=>$data->id,'slug'=>$data->slug]);
     }
 
     public function addtocart($id)
@@ -69,6 +94,8 @@ class HomeController extends Controller
         //exit();
         return view("home.category_products",['setting'=>$setting,'page'=>'home','datalist'=>$datalist,'data'=>$data]);
     }
+
+
 
 
 

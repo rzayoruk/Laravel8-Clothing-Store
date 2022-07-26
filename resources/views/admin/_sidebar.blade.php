@@ -198,6 +198,7 @@
             <li><a href="{{route('admin_category')}}"><i class="fa fa-book"></i> <span>Categories</span></a></li>
             <li><a href="{{route('admin_products')}}"><i class="fa fa-book"></i> <span>Products</span></a></li>
             <li><a href="{{route('admin_message')}}"><i class="fa fa-book"></i> <span>Messages</span></a></li>
+            <li><a href="{{route('admin_reviews')}}"><i class="fa fa-book"></i> <span>Reviews</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

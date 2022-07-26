@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Review;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,10 +19,25 @@ class UserController extends Controller
     public function index()
     {
         $setting=Setting::first();
-        $slider=Product::select('title','image','price')->limit(15)->get();
-        $data=['setting'=>$setting,'slider'=>$slider];
+        //$slider=Product::select('title','image','price')->limit(15)->get();
+        $data=['setting'=>$setting];
         return view('home.user_profile',$data);
     }
+
+    public function myReviews(){
+
+        $datalist=\App\Models\Review::where('user_id','=',Auth::user()->id)->get();
+        return view('home.user_reviews',['datalist'=>$datalist]);
+    }
+
+    public function deleteMyReview(Review $review,$id){
+        $data=\App\Models\Review::find($id);
+        $data->delete();
+        return redirect()->back()->with('success','Review Deleted');
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
