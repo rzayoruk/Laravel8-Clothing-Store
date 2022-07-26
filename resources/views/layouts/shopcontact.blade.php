@@ -26,6 +26,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('assets')}}/css/style.css" rel="stylesheet">
+    @yield('js')
 </head>
 
 <body>
@@ -47,7 +48,9 @@
 @section('content')
 
 @show
+
 @include('home._footer')
+
 
 </body>
 

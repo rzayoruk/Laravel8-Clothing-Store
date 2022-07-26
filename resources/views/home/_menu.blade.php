@@ -11,7 +11,7 @@
                 <a href="{{route('home_index')}}" class="nav-item nav-link">Shop</a>
                 <a href="{{route('aboutus')}}" class="nav-item nav-link">About Us</a>
                 <a href="{{route('references')}}" class="nav-item nav-link">References</a>
-                <a href="{{route('home_index')}}" class="nav-item nav-link">FAQ</a>
+                <a href="{{route('faq')}}" class="nav-item nav-link">FAQ</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
             </div>
             <div class="navbar-nav ml-auto placeholder-yellow-900">
