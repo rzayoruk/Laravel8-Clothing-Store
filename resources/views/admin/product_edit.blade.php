@@ -41,6 +41,7 @@
                             <i class="fa fa-times"></i></button>
                     </div>
                 </div>
+
                 <div class="box-body">
 
 
@@ -130,7 +131,7 @@
                 </div>
                 <!-- /.box-body -->
                 </form>
-
+            </div>
             </div>
             <!-- /.box-body -->
         </section>

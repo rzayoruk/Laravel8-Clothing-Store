@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -99,7 +101,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('/',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
         Route::post('update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
     });
-
+#reviews
     Route::prefix('reviews')->group(function (){
 
         Route::get('/',[\App\Http\Controllers\Admin\ReviewController::class,'index'])->name('admin_reviews');
@@ -113,10 +115,29 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 });
 
-Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
-    Route::get('/',[\App\Http\Controllers\UserController::class,'index'])->name('myprofile');
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+    Route::get('/profile',[\App\Http\Controllers\UserController::class,'index'])->name('userprofile');
     Route::get('/myreview',[\App\Http\Controllers\UserController::class,'myReviews'])->name('myreviews');
     Route::get('/deletemyreview/{id}',[\App\Http\Controllers\UserController::class,'deleteMyReview'])->name('delete_myreview');
+
+    Route::prefix('product')->group(function (){
+
+        Route::get('/',[ProductController::class,'index'])->name('user_products');
+        Route::get('create',[ProductController::class,'create'])->name('user_product_create');
+        Route::post('store',[ProductController::class,'store'])->name('user_product_store');
+        Route::get('edit/{id}',[ProductController::class,'edit'])->name('user_product_edit');
+        Route::post('update/{id}',[ProductController::class,'update'])->name('user_product_update');
+        Route::get('delete/{id}',[ProductController::class,'destroy'])->name('user_product_delete');
+        Route::get('show',[ProductController::class,'show'])->name('user_product_show');
+    });
+
+    Route::prefix('image')->group(function (){
+
+        Route::get('create/{product_id}',[ImageController::class,'create'])->name('user_product_image_create');// product id
+        Route::post('store/{product_id}',[ImageController::class,'store'])->name('user_product_image_store');// product id
+        Route::get('delete/{id}',[ImageController::class,'destroy'])->name('user_product_image_delete');
+        Route::get('show',[ImageController::class,'show'])->name('user_product_image_show');
+    });
 
 
 });

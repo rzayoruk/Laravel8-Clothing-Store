@@ -16,7 +16,7 @@
             </div>
             <div class="navbar-nav ml-auto placeholder-yellow-900">
             @auth
-                    <a href="{{route('myprofile')}}"><p>{{Auth::user()->name}}</p></a>
+                    <a href="{{route('userprofile')}}"><p>{{Auth::user()->name}}</p></a>
                     <a href="{{route('logout')}}">Logout</a>
             @endauth
                 @guest()
