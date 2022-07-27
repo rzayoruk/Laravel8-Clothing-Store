@@ -1,8 +1,7 @@
 @extends('layouts.shopcontact')
 
-@section('title', $setting->title)
-@section('description'){{$setting->description}}@endsection
-@section('keywords',$setting->keywords)
+@section('title', 'Contact Page')
+
 
 @section('content')
 
@@ -63,4 +62,5 @@
          </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 @endsection

@@ -18,7 +18,7 @@
                            <li><a href="{{route('userprofile')}}">My Profile</a></li>
                            <li><a href="">My Orders</a></li>
                            <li><a href="{{route('myreviews')}}">My Reviews</a></li>
-                           <li><a href="">My Shopcart</a></li>
+                           <li><a href="{{route('user_shopcart')}}">My Shopcart</a></li>
                            <li><a href="{{route('user_products')}}">My Products</a></li>
                            <li><a href="{{route('logout')}}">logout</a></li>
                        </ul>
