@@ -15,7 +15,7 @@
                         <h3>User Panel</h3>
                        <ul>
                            <li><a href="{{route('userprofile')}}">My Profile</a></li>
-                           <li><a href="">My Orders</a></li>
+                           <li><a href="{{route('user_orders')}}">My Orders</a></li>
                            <li><a href="{{route('myreviews')}}">My Reviews</a></li>
                            <li><a href="{{route('user_shopcart')}}">My Shopcart</a></li>
                            <li><a href="{{route('user_products')}}">My Products</a></li>

@@ -13,10 +13,10 @@
                         <hr>
                        <ul>
                            <li><a href="{{route('userprofile')}}"><h6>My Profile</h6></a></li>
-                           <li><a href=""><h6>My Orders</h6></a></li>
+                           <li><a href="{{route('user_orders')}}"><h6>My Orders</h6></a></li>
                            <li><a href="{{route('myreviews')}}"><h6>My Reviews</h6></a></li>
                            <li><a href="{{route('user_shopcart')}}"><h6>My Shopcart</h6></a></li>
-                           <li><a href="{{'user_products'}}"><h6>My Products</h6></a></li>
+                           <li><a href="{{route('user_products')}}"><h6>My Products</h6></a></li>
                            <li><a href="{{route('logout')}}"><h6>logout</h6></a></li>
                        </ul>
                     </div>
