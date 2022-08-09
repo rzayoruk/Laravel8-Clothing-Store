@@ -200,6 +200,22 @@
             <li><a href="{{route('admin_message')}}"><i class="fa fa-book"></i> <span>Messages</span></a></li>
             <li><a href="{{route('admin_reviews')}}"><i class="fa fa-book"></i> <span>Reviews</span></a></li>
             <li><a href="{{route('admin_faqs')}}"><i class="fa fa-book"></i> <span>FAQ's</span></a></li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Orders</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin_orders')}}"><i class="fa fa-circle-o"></i>All Orders</a></li>
+                    <li><a href="{{route('admin_order_list',['status'=>'New'])}}"><i class="fa fa-circle-o"></i>New Orders</a></li>
+                    <li><a href="{{route('admin_order_list',['status'=>'Accepted'])}}"><i class="fa fa-circle-o"></i> Accepted Orders</a></li>
+                    <li><a href="{{route('admin_order_list',['status'=>'Shipped'])}}"><i class="fa fa-circle-o"></i> Shipped Orders</a></li>
+                    <li><a href="{{route('admin_order_list',['status'=>'Completed'])}}"><i class="fa fa-circle-o"></i> Completed Orders</a></li>
+                    <li><a href="{{route('admin_order_list',['status'=>'Cancelled'])}}"><i class="fa fa-circle-o"></i> Cancelled Orders</a></li>
+                </ul>
+            </li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

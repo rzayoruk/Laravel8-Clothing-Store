@@ -50,7 +50,9 @@
                                         <td>{{$rows->rate}}</td>
                                         <td>{{$rows->status}}</td>
                                         <td>{{$rows->created_at}}</td>
-                                        <td width="100"><a href="{{route('admin_review_edit',['id'=>$rows->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1300, height=700')"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt="" align="left"></a><a href="{{route('admin_review_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt="" align="right"></a></td>
+                                        <td width="100">
+                                            <a href="{{route('admin_review_edit',['id'=>$rows->id])}}" onclick="return !window.open(this.href,'','top=50 left=100 width=1300, height=700')"><img src="{{asset('assets/admin/images')}}/edit.png" height="35" alt="" align="left"></a>
+                                            <a href="{{route('admin_review_delete',['id'=>$rows->id])}}" onclick="return confirm('The record will be deleted Sure?')"><img src="{{asset('assets/admin/images')}}/delete.png" height="35" alt="" align="right"></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
