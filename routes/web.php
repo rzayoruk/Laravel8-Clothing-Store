@@ -43,8 +43,10 @@ Route::post('/getproduct',[HomeController::class,'getproduct'])->name('getproduc
 
 
 
-/// Admin
+/// Admin auth
 Route::middleware('auth')->prefix('admin')->group(function (){
+
+    Route::middleware('admin')->group(function (){
 
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('adminhome');
     #category
@@ -125,9 +127,11 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show/{id}', [AdminOrderController::class, 'show'])->name('admin_order_show');
     });
 
+    });#admin
+
+});#auth
 
 
-});
 ##USER
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
     Route::get('/profile',[\App\Http\Controllers\UserController::class,'index'])->name('userprofile');

@@ -32,6 +32,7 @@
 <div class="login-box">
     <div class="login-logo">
         <a href="{{asset('assets')}}/admin/index2.html"><b>Admin</b>LTE</a>
+        @include('home.message')
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
